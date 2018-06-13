@@ -55,8 +55,12 @@
 
 Intro
 =====
-LSST uses Kubernetes (K8s) as a distributed management system for LSST containerized services This document describes the underlying system configurations, best practices and use cases for the K8s during development and in production.   LSST services will be deployed across enclaves.  While users of these services may interact with services between enclaves, the enclaves themselves are standalone.  
-
+LSST uses Kubernetes (K8s) as a distributed management system for LSST
+containerized services. This document describes the underlying system 
+configurations, best practices and use cases for the K8s during development
+and in production.   LSST services will be deployed across enclaves.  While
+users of these services may interact with services between enclaves, the
+enclaves themselves are standalone.  
 
 Actors
 ======
@@ -68,16 +72,19 @@ General
 
 Some of these Actor's roles can be held by the same person.
 
-Developer  LSST-funded developer
+Developer - LSST-funded developer
 
-Science User LSST affiliate partner
+Science User - LSST affiliate partner
 
 Security - LSST-funded staff member specializing in security
 
-System Administrator  LSST-funded system administration staff member
+System Administrator - LSST-funded system administration staff member
 
-K8s Cluster Administrator  K8s system software administrator.  Responsibilities include: K8s software installation and updates, disaster recovery, network overlay deployments, adding and removing K8s nodes.
-K8s Service Administrator Deploys, monitors and maintains LSST services to the production K8s cluster.
+K8s Cluster Administrator - K8s system software administrator.  
+Responsibilities include: K8s software installation and updates, disaster
+recovery, network overlay deployments, adding and removing K8s nodes. K8s
+Service Administrator Deploys, monitors and maintains LSST services to the
+production K8s cluster.
 
 
 Software 
@@ -91,22 +98,41 @@ Kubernetes - distributed management system for containerized applications
 Users
 =====
 
-There are two types of users for the clusters: LSST development staff and LSST Science Users.
+There are two types of users for the clusters: LSST development staff and LSST
+Science Users.
 
-Sysadmin staff has procedures for adding both types of users.   LSST development staff has access to the LSST development resources (lsst-dev, etc), as well as the science platform.  LSST Science Users only have access to the science platform.
+Sysadmin staff has procedures for adding both types of users.   LSST
+development staff has access to the LSST development resources (lsst-dev, etc),
+as well as the science platform.  LSST Science Users only have access to the
+science platform.
 
-Development staff that are no longer part of the project use all access to the K8s cluster and other LSST resources.   LSST Science Users who no longer have an allocation will still be able to access their data, but lose access to other services that had been available to them during their allocation.  
+Development staff that are no longer part of the project use all access to the
+K8s cluster and other LSST resources.   LSST Science Users who no longer have
+an allocation will still be able to access their data, but lose access to
+other services that had been available to them during their allocation.  
 
-Users who change status during the project from LSST Science User to LSST staff retain the data they had access to as a Science User. Users who change status during the project from LSST staff to Science user lose access to development resources, and will be given a new account, adhering to the data privilege policy associated with their allocation.
+Users who change status during the project from LSST Science User to LSST 
+staff retain the data they had access to as a Science User. Users who change
+status during the project from LSST staff to Science user lose access to 
+development resources, and will be given a new account, adhering to the data
+privilege policy associated with their allocation.
 
-  The K8s Service Administrator deploys services, including administrative services to the production K8s cluster. We expect a independent development platform to be available for development testing. Authorized LSST development staff have admin access to development platform in order to test and deploy services.  This is to prevent exposure of data available as staff, which isn't available to this user in their new role. It would be difficult and very time consuming to audit the existing data in their directory to prevent this.
+The K8s Service Administrator deploys services, including administrative
+services to the production K8s cluster. We expect a independent development
+platform to be available for development testing. Authorized LSST development
+staff have admin access to development platform in order to test and deploy
+services.  This is to prevent exposure of data available as staff, which isn't
+available to this user in their new role. It would be difficult and very time
+consuming to audit the existing data in their directory to prevent this.
 
 
 
 JupyterLab Account Access
 =========================
-LSST development staff access to the Kubernetes home area via /home/{user}/jhome on lsst-dev.    This is the same home area on JuypterLab.
-LSST Science User access to this jhome GPFS fileset is only available through JuypterLab.
+LSST development staff access to the Kubernetes home area via 
+/home/{user}/jhome on lsst-dev.    This is the same home area on JuypterLab.
+LSST Science User access to this jhome GPFS fileset is only available through 
+JuypterLab.
 
 Account Access
 --------------
@@ -142,10 +168,16 @@ Fileset Access
 GPFS filesets
 -------------
 
-Access to "project" (read-write):  All users are put into one or more groups(s), and have directory access below the "project" files for each group they belong to.  This is not unrestricted access to all of "project"
+Access to "project" (read-write):  All users are put into one or more 
+groups(s), and have directory access below the "project" files for each 
+group they belong to.  This is not unrestricted access to all of "project"
+
 Access to "datasets" (read-only):  Individuals/groups have different types of access, depending on their standing in the project.   Some datasets are restricted for some period of time to LSST (first tier) collaborators before they become available to other parts of the project.
+
 Access to "scratch" (read-write):  All users are put into one or more groups(s), and have directory access below the "scratch" fileset for each group they belong to.  This is not unrestricted access to all of scratch.   
+
 Access to "jhome" (read-write):  LSST Developers and Science Users have access to the jhome fileset.   LSST developers have this as a separate mount point named jhome which is accessible from their counts on lsst-dev.  When they log in, their home directory is in /home/{user}.  Users of lsst-dev also have access to jhome.   LSST Science Users can only access the "jhome" fileset through the accounts they access on the K8s commons, and have no visibility to /home.  An LSST Science User is granted disk space with a quota of 100gig, along with some privileges to write to /project and /scratch.
+
 
 Access to "software" (read-only): All developers have read-only access to this fileset.  This is currently not accessible via notebook
 
@@ -293,7 +325,7 @@ Namespace ACL
 
 Kubernetes namespaces allow partitioning of applications into their own areas, with unique resource names within that namespace.  For example, JupyterLab is deployed in the jupyter-lsst namespace. The development groups for the PDAC are already implementing namespaces for their applications.
 
- As of this writing, no access control enforcement is available for namespaces in Kubernetes. Anyone (or any pod) with privileges on the cluster can access any namespace and its resources.  Currently we afford some small measure of restricted access by employing the use of Kubernetes namespace contexts.   When working within a namespace, only resources in that namespace can be seen and accessed.  Users can still override this or move into new contexts, so this is not meant to be a substitute for real ACL.   We expect to implement ACL for namespaces when Kubernetes deploys that feature in a future release.
+As of this writing, no access control enforcement is available for namespaces in Kubernetes. Anyone (or any pod) with privileges on the cluster can access any namespace and its resources.  Currently we afford some small measure of restricted access by employing the use of Kubernetes namespace contexts.   When working within a namespace, only resources in that namespace can be seen and accessed.  Users can still override this or move into new contexts, so this is not meant to be a substitute for real ACL.   We expect to implement ACL for namespaces when Kubernetes deploys that feature in a future release.
 
 
 Preparing for disaster recovery
