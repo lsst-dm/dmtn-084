@@ -405,6 +405,9 @@ get advice on how to do upgrades, as well as the upgrade itself.
 # sudo kubeadm upgrade plan
 
 Components that must be upgraded manually after you have upgraded the control plane with 'kubeadm upgrade apply':
+
+::
+ 
  COMPONENT   CURRENT       AVAILABLE
  Kubelet     20 x v1.9.3   v1.10.4
 
@@ -419,6 +422,8 @@ Components that must be upgraded manually after you have upgraded the control pl
  Etcd                 3.1.11    3.1.11
 
 You can now apply the upgrade by executing the following command:
+
+::
 
     kubeadm upgrade apply v1.10.4
 
@@ -524,20 +529,15 @@ Security
 There are a number of resources available that I found during the research for this document that describes hardening of K8s clusters.
 
 Hacking and Hardening Kubernetes By Example
-Video: https://www.youtube.com/watch?v=vTgQLzeBfRU
-Slides: https://schd.ws/hosted_files/kccncna17/d8/Hacking%20and%20Hardening%20Kubernetes%20By%20Example%20v2.pdf
+`Video <https://www.youtube.com/watch?v=vTgQLzeBfRU>`_
+`Slides <https://schd.ws/hosted_files/kccncna17/d8/Hacking%20and%20Hardening%20Kubernetes%20By%20Example%20v2.pdf>`_
 
 
-Instructions from Kubernetes site:
-Securing a Cluster
-https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/
+`Securing a Cluster <https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/>`_
 
-Overview of Kubernetes Security best practices:
-https://github.com/freach/kubernetes-security-best-practice/blob/master/README.md
+`Overview of Kubernetes Security best practices <https://github.com/freach/kubernetes-security-best-practice/blob/master/README.md>`_
 
-On Securing the Kubernetes Dashboard
-
-https://blog.heptio.com/on-securing-the-kubernetes-dashboard-16b09b1b7aca
+`On Securing the Kubernetes Dashboard <https://blog.heptio.com/on-securing-the-kubernetes-dashboard-16b09b1b7aca>`_
 
 
 An open-source Kubernetes security test suite, kube-bench, is available via GitHub. This suite runs tests that show pass/fail, as well as recommends how settings may be removed or changed for any issues that are detected.  Note that this benchmark suite is not in sync with the current Kubernetes release. The latest update was one month ago.  However, that release lags behind by two revisions of Kubernetes as of this writing. 
