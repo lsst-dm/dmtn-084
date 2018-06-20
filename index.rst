@@ -524,6 +524,7 @@ Security
 There are a number of resources available that I found during the research for this document that describes hardening of K8s clusters.
 
 Hacking and Hardening Kubernetes By Example:
+
 - `Video <https://www.youtube.com/watch?v=vTgQLzeBfRU>`_
 - `Slides <https://schd.ws/hosted_files/kccncna17/d8/Hacking%20and%20Hardening%20Kubernetes%20By%20Example%20v2.pdf>`_
 
