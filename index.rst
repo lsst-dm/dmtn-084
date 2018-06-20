@@ -474,52 +474,47 @@ and reconnect to other services.
 
 Option 2 is to bring back the K8s cluster to the state at which the previous
 control plane backup had been done.  This can be done by:
- etcdctl
- kube-backup
- ark - heptio/ark
- reshifter
+
+- `etcdctl <https://github.com/coreos/etcd/tree/master/etcdctl>`_
+- `kube-backup <https://github.com/pieterlange/kube-backup>`_
+- `ark <https://github.com/heptio/ark`_
+- `reshifter <https://github.com/mhausenblas/reshifter>`_
                             
-
-
-
-
-
-
 JupyterLab Requirements (see: sqr-018)
 =======================
 
 Administration 
-^^^^^^^^^^^^^^
+--------------
 
 During development, a small set of users will need admin access on the K8s cluster to configure resources correctly.  Once development has stabilized and we move services to production, the K8s services administrator will deploy services based on instructions devised during development.
 
 CPU capacity
-^^^^^^^^^^^^
+------------
 
 Deployed pods will require between 0.5 and 4 cores per concurrent user.
 
 Memory
-^^^^^^
+------
 
 Deployed containers will require between 512MB and 8GB per concurrent user.
 
 Local Storage
-^^^^^^^^^^^^^
+-------------
 
 Local storage per node needs to be about 100GB.  As of this writing, containers are about 10GB each, with the expectation that about five different container images will be stored on a node at any given time.
 
 User Storage
-^^^^^^^^^^^^
+------------
 
 User storage in jhome is set to a 100GB quota.
 
 Container Cache
-^^^^^^^^^^^^^^^
+---------------
 
 Local container cache size is 250GB total.
 
 Shared storage
-^^^^^^^^^^^^^^
+--------------
 
 This is storage intended for quick prototyping.  10TB total.
 
@@ -528,7 +523,7 @@ Security
 
 There are a number of resources available that I found during the research for this document that describes hardening of K8s clusters.
 
-Hacking and Hardening Kubernetes By Example
+Hacking and Hardening Kubernetes By Example:
 `Video <https://www.youtube.com/watch?v=vTgQLzeBfRU>`_
 `Slides <https://schd.ws/hosted_files/kccncna17/d8/Hacking%20and%20Hardening%20Kubernetes%20By%20Example%20v2.pdf>`_
 
