@@ -477,7 +477,7 @@ control plane backup had been done.  This can be done by:
 
 - `etcdctl <https://github.com/coreos/etcd/tree/master/etcdctl>`_
 - `kube-backup <https://github.com/pieterlange/kube-backup>`_
-- `ark <https://github.com/heptio/ark`_
+- `ark <https://github.com/heptio/ark>`_
 - `reshifter <https://github.com/mhausenblas/reshifter>`_
                             
 JupyterLab Requirements (see: sqr-018)
@@ -524,8 +524,8 @@ Security
 There are a number of resources available that I found during the research for this document that describes hardening of K8s clusters.
 
 Hacking and Hardening Kubernetes By Example:
-`Video <https://www.youtube.com/watch?v=vTgQLzeBfRU>`_
-`Slides <https://schd.ws/hosted_files/kccncna17/d8/Hacking%20and%20Hardening%20Kubernetes%20By%20Example%20v2.pdf>`_
+- `Video <https://www.youtube.com/watch?v=vTgQLzeBfRU>`_
+- `Slides <https://schd.ws/hosted_files/kccncna17/d8/Hacking%20and%20Hardening%20Kubernetes%20By%20Example%20v2.pdf>`_
 
 
 `Securing a Cluster <https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/>`_
