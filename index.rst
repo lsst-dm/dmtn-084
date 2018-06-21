@@ -46,7 +46,7 @@
 
 .. note::
 
-   **This technote is not yet published.**
+   **This technote is not yet published. Additional information will be added.**
 
    Notes on aspects of the Kubernetes Cluster
 
