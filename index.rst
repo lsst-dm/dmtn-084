@@ -168,30 +168,33 @@ Fileset Access
 GPFS filesets
 -------------
 
-Access to "project" (read-write):  All users are put into one or more
+Access to "/project" (read-write):  All users are put into one or more
 groups(s), and have directory access below the "project" fileset to each
 group to which they belong.  This access is not unrestricted to all of
 "project."
 
-Access to "datasets" (read-only):  Individuals/groups have different types of
+Access to "/project/shared/": All users have read access to all directories.
+
+Access to "/datasets" (read-only):  Individuals/groups have different types of
 access, depending on their standing in the project. Some datasets are
 restricted for some period to LSST (first tier) collaborators before they
 become available to other parts of the project.
 
-Access to "scratch" (read-write):  All users are put into one or more
+Access to "/scratch" (read-write):  All users are put into one or more
 groups(s), and have directory access below the "scratch" fileset to each to
 which they belong.  This access is not unrestricted to all of scratch. 
   
-Access to "jhome" (read-write):  LSST Developers and Science Users have
-access to the jhome fileset.   LSST developers have this as a separate mount
-point named jhome which is accessible from their counts on lsst-dev. When
-they log in, their home directory is in /home/{user}.  Users of lsst-dev
-also have access to jhome.   LSST Science Users can only access the "jhome"
-fileset through the accounts they access on the K8s commons and have no
-visibility to /home.   An LSST Science User has write access to write to
-/project and /scratch, and 100GB of disk space.
+Access to "/jhome" (read-write):  LSST Developers and Science Users have
+access to the jhome fileset. Currently, LSST developers have this as a 
+separate mount point named jhome which is accessible from their counts on 
+lsst-dev. When they log in, their home directory is in /home/{user}.  Users
+of lsst-dev also have access to jhome. LSST Science Users can only access 
+the "jhome" fileset through the accounts they access on the K8s commons and 
+have no visibility to /home.  In production, this will be the case for all 
+users.  An LSST Science User has write access to write to /project 
+and /scratch, and 100GB of disk space.
 
-Access to "software" (read-only): All developers have read-only access to
+Access to "/software" (read-only): All developers have read-only access to
 this fileset.  This access is currently not available via Jupyter Notebook.
 This access may be added in the future to access the batch system commands.
 
@@ -200,7 +203,7 @@ VOSpace/WebDAV
 
 Access to "File Workspace" (read-write): File Workspace is a subdirectory
 under the jhome fileset described above.  Anything in the File Workspace is
-accessible via VOSpace and WebDAV.  (Note that because of this exposure, it
+accessible via VOSpace and WebDAV. Note that because of this exposure, it
 needs to be a subdirectory, not the $HOME of jhome itself.
 
 Users cannot modify existing containers to add additional software.  Any areas
