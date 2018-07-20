@@ -180,9 +180,8 @@ access, depending on their standing in the project. Some datasets are
 restricted for some period to LSST (first tier) collaborators before they
 become available to other parts of the project.
 
-Access to "/scratch" (read-write):  All users are put into one or more
-groups(s), and have directory access below the "scratch" fileset to each to
-which they belong.  This access is not unrestricted to all of scratch. 
+Access to "/scratch" (read-write):  Currently, LSST developers have directory 
+access below the this fileset.  Science Users have no access to this fileset.
   
 Access to "/jhome" (read-write):  LSST Developers and Science Users have
 access to the jhome fileset. Currently, LSST developers have this as a 
